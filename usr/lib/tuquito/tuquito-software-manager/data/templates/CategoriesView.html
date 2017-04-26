@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <script src="/usr/share/javascript/jquery/jquery.min.js"></script>
+    <script>
+    function changeTitle(title) {
+        document.title = title;
+        document.title = "nop";
+    }
+    function addCategory(name, num_packages, img) {
+        li = '<li id="" data-cant="' + num_packages + '" data-name="' + name + '"><img src="' + img + '"><span>' + name + '</span></li>';
+        $("ul").append(li);
+        categoryCount++;
+    }
+    function animateItems() {
+        $("li").mouseenter(function() {
+            name = $(this).data("name");
+            cant = $(this).data("cant");
+            $("footer").html(cant).fadeIn();
+        }).mouseleave(function(){
+            $("footer").text("$select").fadeIn();
+        }).click(function() {
+            name = $(this).data("name");
+            changeTitle("call:on_category_clicked:" + name);
+        });
+    }
+    function clearCategories() {
+        document.getElementById("grid").innerHTML = "";
+    }
+    var
+    categoryCount = 0;
+    </script>
+    <style>
+    * {
+        -webkit-user-select: none;
+        -webkit-user-drag: none;
+    }
+    html {
+        font-family: "Ubuntu", Lucida Sans Unicode, Arial, Helvetica, Sans-Serif;
+        height: 100%;
+        color: #4B4B4B;
+        padding: 0;
+        margin: 0;
+        text-shadow: white 1px 1px 0px;
+        overflow: hidden;
+    }
+    body {
+        background: url('/usr/lib/tuquito/tuquito-software-manager/data/clouds.png') top right no-repeat;
+        height: 90%;
+        margin: 0;
+        padding-top: 50px;
+    }
+    #grid { margin: 0 auto 0 auto; }
+    #grid li {
+        display: inline-block;
+        list-style: none outside;
+        float: left;
+        padding: 0;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        text-align: center !important;
+        height: 90px;
+        width: 90px;
+    }
+    #grid li span {
+    	font-size: 12px;
+    	margin-top: 10px;
+    	display: block;
+    }
+    #grid li:hover { cursor: pointer }
+    #grid li img {
+        -webkit-transition: all 0.18s ease;
+        height: 42px;
+        width: 42px;
+    }
+    #grid li:hover img { -webkit-transform: scale(1.6) }
+    footer {
+        border-radius: 4px;
+        color: white;
+        position: absolute;
+        left: 4px;
+        bottom: 4px;
+        padding: 6px 20px;
+        background-color: rgba(0, 0, 0, 0.7);
+        text-shadow: none;
+        font-size: 15px;
+    }
+    </style>
+</head>
+<body>
+    <ul id="grid"></ul>
+    <footer>$select</footer>
+</body>
+</html>
