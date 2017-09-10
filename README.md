@@ -1,1 +1,5 @@
-# emmi-aplicativos
+<h1 align="center">Emmi Aplicativos</h1>
+
+
+<p align="center"> 
+<a href="https://github.com/emmilinux/emmi-aplicativos/blob/master/LICENSE"><img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="license"/></a></p>
